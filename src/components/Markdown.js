@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import Navbar from './Navbar.js';
-import Markdown from './Markdown';
-import Json from './Json';
+import Navbar from './Navbar.js'
 
 import {example} from '../example.js';
 
-class App extends React.Component {
+class Markdown extends React.Component {
 
 	state = {
 		text: example,
@@ -31,13 +29,26 @@ class App extends React.Component {
 
 	render() {
 		return(
-			<div>
-				<Navbar />
-				<Markdown />
-				<Json />
+
+				<div className="container">
+					<h1 className="text-center">Markdown Live preview</h1>
+					<hr />
+					<div className="row">
+						<div className="col-md-6">
+							<textarea 
+							className="form-control" 
+							rows="50" 
+							value={this.state.text}
+							onChange={(e) => this.editText(e)}
+							></textarea>
+						</div>
+						<div className="col-md-6">
+							<ReactMarkdown source={this.state.text} />,
+						</div>
+					</div>
 			</div>
 		)
 	}
 }
 
-export default App;
+export default Markdown;
